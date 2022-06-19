@@ -1,0 +1,16 @@
+Starting Laravel development server: http://127.0.0.1:8000
+[Sat Jun 18 21:34:56 2022] PHP 8.1.7 Development Server (http://127.0.0.1:8000) started
+[Sat Jun 18 21:35:04 2022] 127.0.0.1:45732 Accepted
+[Sat Jun 18 21:35:04 2022] 127.0.0.1:45732 Closing
+[Sat Jun 18 21:35:04 2022] 127.0.0.1:45734 Accepted
+[Sat Jun 18 21:35:04 2022] 127.0.0.1:45734 [200]: GET /js/app.js
+[Sat Jun 18 21:35:04 2022] 127.0.0.1:45734 Closing
+[Sat Jun 18 21:35:04 2022] 127.0.0.1:45736 Accepted
+[Sat Jun 18 21:35:04 2022] 127.0.0.1:45736 [200]: GET /favicon.ico
+[Sat Jun 18 21:35:04 2022] 127.0.0.1:45736 Closing
+Starting Laravel development server: http://127.0.0.1:8001
+[Sat Jun 18 21:36:22 2022] PHP 8.1.7 Development Server (http://127.0.0.1:8001) started
+Starting Laravel development server: http://127.0.0.1:8002
+[Sat Jun 18 21:37:12 2022] PHP 8.1.7 Development Server (http://127.0.0.1:8002) started
+Environment modified. Restarting server...
+[Sat Jun 18 23:04:06 2022] PHP 8.1.7 Development Server (http://127.0.0.1:8002) started
