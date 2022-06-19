@@ -4,7 +4,8 @@
         <div v-for="task in tasks" :key="task.id"
             class="flex justify-content-center p-2 border-b-2 border-gray-300 my-2">
 
-            <input type="checkbox" @click="completeTask(task)">
+            <input type="checkbox" :checked="checkCompleted(task.completed)"
+            @click="completeTask(task)">
 
             <p class="mx-2 mt-1 text-gray-900">{{ task.todo }}</p>
 
@@ -73,12 +74,17 @@ export default {
                 task: task.todo,
                 completed: complete
             }).then(response => { console.log(response) })
-            .catch(error => { console.log(error.response) });
+                .catch(error => { console.log(error.response) });
+        },
+
+        checkCompleted(param) {
+            if (param === 1) {
+                return true;
+            } else {
+                return false;
+            }
         }
-
     },
-
-
     created() {
         this.getTask();
     },

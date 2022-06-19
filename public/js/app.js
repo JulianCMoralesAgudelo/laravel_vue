@@ -5528,6 +5528,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -5565,6 +5566,13 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (error) {
         console.log(error.response);
       });
+    },
+    checkCompleted: function checkCompleted(param) {
+      if (param === 1) {
+        return true;
+      } else {
+        return false;
+      }
     }
   },
   created: function created() {
@@ -28490,6 +28498,7 @@ var render = function () {
         [
           _c("input", {
             attrs: { type: "checkbox" },
+            domProps: { checked: _vm.checkCompleted(task.completed) },
             on: {
               click: function ($event) {
                 return _vm.completeTask(task)
