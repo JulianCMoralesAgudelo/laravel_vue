@@ -3,11 +3,13 @@
 
         <div v-for="task in tasks" :key="task.id"
             class="flex justify-content-center p-2 border-b-2 border-gray-300 my-2">
-            <input type="checkbox">
+
+            <input type="checkbox" @click="completeTask(task)">
+
             <p class="mx-2 mt-1 text-gray-900">{{ task.todo }}</p>
 
             <div class="ml-auto flex">
-                <router-link :to="'/edit/'+task.id">
+                <router-link :to="'/edit/' + task.id">
                     <svg class="h-6 w-6 text-green-500" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
                         stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" />
@@ -16,7 +18,8 @@
                     </svg>
                 </router-link>
 
-                <form>
+                <form v-on:submit.prevent="deleteTask(task.id)">
+
                     <button type="submit">
                         <svg class="h-6 w-6 text-red-500" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
                             stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -33,7 +36,6 @@
 
             </div>
 
-
         </div>
     </div>
 </template>
@@ -45,10 +47,40 @@ export default {
             tasks: []
         }
     },
+
+    methods: {
+
+        getTask() {
+            axios.get('/tasks')
+                .then(response => this.tasks = response.data)
+                .catch();
+        },
+
+        deleteTask(id) {
+            axios.delete('/tasks/' + id)
+                .then(response => { console.log(response) })
+                .catch(error => { console.log(error.response) });
+            this.getTask();
+        },
+
+        completeTask(task) {
+            if (task.completed === 0) {
+                var complete = 1;
+            } else {
+                var complete = 0;
+            }
+            axios.put('/tasks/' + task.id, {
+                task: task.todo,
+                completed: complete
+            }).then(response => { console.log(response) })
+            .catch(error => { console.log(error.response) });
+        }
+
+    },
+
+
     created() {
-        axios.get('/tasks')
-            .then(response => this.tasks = response.data)
-            .catch();
+        this.getTask();
     },
 }
 </script>

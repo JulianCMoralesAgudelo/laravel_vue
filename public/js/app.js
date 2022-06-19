@@ -5526,18 +5526,49 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       tasks: []
     };
   },
-  created: function created() {
-    var _this = this;
+  methods: {
+    getTask: function getTask() {
+      var _this = this;
 
-    axios.get('/tasks').then(function (response) {
-      return _this.tasks = response.data;
-    })["catch"]();
+      axios.get('/tasks').then(function (response) {
+        return _this.tasks = response.data;
+      })["catch"]();
+    },
+    deleteTask: function deleteTask(id) {
+      axios["delete"]('/tasks/' + id).then(function (response) {
+        console.log(response);
+      })["catch"](function (error) {
+        console.log(error.response);
+      });
+      this.getTask();
+    },
+    completeTask: function completeTask(task) {
+      if (task.completed === 0) {
+        var complete = 1;
+      } else {
+        var complete = 0;
+      }
+
+      axios.put('/tasks/' + task.id, {
+        task: task.todo,
+        completed: complete
+      }).then(function (response) {
+        console.log(response);
+      })["catch"](function (error) {
+        console.log(error.response);
+      });
+    }
+  },
+  created: function created() {
+    this.getTask();
   }
 });
 
@@ -28457,7 +28488,14 @@ var render = function () {
             "flex justify-content-center p-2 border-b-2 border-gray-300 my-2",
         },
         [
-          _c("input", { attrs: { type: "checkbox" } }),
+          _c("input", {
+            attrs: { type: "checkbox" },
+            on: {
+              click: function ($event) {
+                return _vm.completeTask(task)
+              },
+            },
+          }),
           _vm._v(" "),
           _c("p", { staticClass: "mx-2 mt-1 text-gray-900" }, [
             _vm._v(_vm._s(task.todo)),
@@ -28501,55 +28539,66 @@ var render = function () {
                 ),
               ]),
               _vm._v(" "),
-              _c("form", [
-                _c("button", { attrs: { type: "submit" } }, [
-                  _c(
-                    "svg",
-                    {
-                      staticClass: "h-6 w-6 text-red-500",
-                      attrs: {
-                        width: "24",
-                        height: "24",
-                        viewBox: "0 0 24 24",
-                        "stroke-width": "2",
-                        stroke: "currentColor",
-                        fill: "none",
-                        "stroke-linecap": "round",
-                        "stroke-linejoin": "round",
-                      },
+              _c(
+                "form",
+                {
+                  on: {
+                    submit: function ($event) {
+                      $event.preventDefault()
+                      return _vm.deleteTask(task.id)
                     },
-                    [
-                      _c("path", {
-                        attrs: { stroke: "none", d: "M0 0h24v24H0z" },
-                      }),
-                      _vm._v(" "),
-                      _c("line", {
-                        attrs: { x1: "4", y1: "7", x2: "20", y2: "7" },
-                      }),
-                      _vm._v(" "),
-                      _c("line", {
-                        attrs: { x1: "10", y1: "11", x2: "10", y2: "17" },
-                      }),
-                      _vm._v(" "),
-                      _c("line", {
-                        attrs: { x1: "14", y1: "11", x2: "14", y2: "17" },
-                      }),
-                      _vm._v(" "),
-                      _c("path", {
+                  },
+                },
+                [
+                  _c("button", { attrs: { type: "submit" } }, [
+                    _c(
+                      "svg",
+                      {
+                        staticClass: "h-6 w-6 text-red-500",
                         attrs: {
-                          d: "M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12",
+                          width: "24",
+                          height: "24",
+                          viewBox: "0 0 24 24",
+                          "stroke-width": "2",
+                          stroke: "currentColor",
+                          fill: "none",
+                          "stroke-linecap": "round",
+                          "stroke-linejoin": "round",
                         },
-                      }),
-                      _vm._v(" "),
-                      _c("path", {
-                        attrs: {
-                          d: "M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3",
-                        },
-                      }),
-                    ]
-                  ),
-                ]),
-              ]),
+                      },
+                      [
+                        _c("path", {
+                          attrs: { stroke: "none", d: "M0 0h24v24H0z" },
+                        }),
+                        _vm._v(" "),
+                        _c("line", {
+                          attrs: { x1: "4", y1: "7", x2: "20", y2: "7" },
+                        }),
+                        _vm._v(" "),
+                        _c("line", {
+                          attrs: { x1: "10", y1: "11", x2: "10", y2: "17" },
+                        }),
+                        _vm._v(" "),
+                        _c("line", {
+                          attrs: { x1: "14", y1: "11", x2: "14", y2: "17" },
+                        }),
+                        _vm._v(" "),
+                        _c("path", {
+                          attrs: {
+                            d: "M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12",
+                          },
+                        }),
+                        _vm._v(" "),
+                        _c("path", {
+                          attrs: {
+                            d: "M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3",
+                          },
+                        }),
+                      ]
+                    ),
+                  ]),
+                ]
+              ),
             ],
             1
           ),

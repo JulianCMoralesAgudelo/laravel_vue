@@ -28,13 +28,14 @@ class TaskController extends Controller
     public function update(Request $request, $id)
     {
         $task = Task::find($id);
-        $task->update([
-            'todo' => $request['todo']
-        ]);
+        $task->todo = $request['task'];
+        $task->completed = $request['completed'];
+        $task->update();
     }
 
     public function destroy($id)
     {
-        //
+        $task = Task::find($id);
+        $task->delete();
     }
 }
