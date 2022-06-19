@@ -7,16 +7,21 @@ Vue.use(VueRouter);
 
 import Form from "./components/Tasks/Form.vue";
 import Task from "./components/Tasks/Lists.vue";
+import Edit from "./components/Tasks/Edit.vue";
 
 const routes = [
     {
-        path: "/form",
+        path: '/form',
         component: Form,
     },
     {
-        path: "/",
+        path: '/',
         component: Task,
     },
+    {
+        path: '/edit/:id',
+        component: Edit,
+    }
 ];
 
 const router = new VueRouter({ routes });

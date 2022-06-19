@@ -19,19 +19,18 @@ class TaskController extends Controller
         Task::create($request->all());
     }
 
-    public function show($id)
-    {
-        //
-    }
-
     public function edit($id)
     {
-        //
+        $task = Task::find($id);
+        return response()->json($task);
     }
 
     public function update(Request $request, $id)
     {
-        //
+        $task = Task::find($id);
+        $task->update([
+            'todo' => $request['todo']
+        ]);
     }
 
     public function destroy($id)
