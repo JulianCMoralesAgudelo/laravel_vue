@@ -13,10 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tasks', function (Blueprint $table) {
+        Schema::create('asignaturas', function (Blueprint $table) {
             $table->id();
-            $table->string('todo');
-            $table->boolean('completed')->default(0);
+            $table->string('nombre_materia');
+            $table->integer('cantidad_creditos');
+            $table->string('docente');
+            $table->string('asignatura_prerequisito');
+            $table->integer('horas_autonomas');
+            $table->integer('horas_dirigidas');
             $table->timestamps();
         });
     }
@@ -28,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tasks');
+        Schema::dropIfExists('asignaturas');
     }
 };

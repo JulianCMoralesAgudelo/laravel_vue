@@ -5455,19 +5455,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      task: ''
+      asignatura: ''
     };
   },
   methods: {
     Guardar: function Guardar() {
-      axios.post('/tasks', {
-        todo: this.task
+      axios.post('/asignaturas', {
+        todo: this.asignatura
       }).then(function (response) {
         console.log(response);
       })["catch"](function (error) {
         console.log(error.response);
       });
-      this.task = '';
+      this.asignatura = '';
       this.$router.push('/');
     }
   }
@@ -28414,7 +28414,7 @@ var render = function () {
     _c(
       "h1",
       { staticClass: "text-3xl text-center font-bold py-4 text-gray-800" },
-      [_vm._v("Crear Tarea")]
+      [_vm._v("Crear Asignatura")]
     ),
     _vm._v(" "),
     _c(
@@ -28435,19 +28435,23 @@ var render = function () {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.task,
-                expression: "task",
+                value: _vm.asignatura,
+                expression: "asignatura",
               },
             ],
             staticClass: "text-xl p-2 mr-2 w-9/12 border-b-2 border-green-500",
-            attrs: { type: "text", placeholder: "Nueva tarea", name: "todo" },
-            domProps: { value: _vm.task },
+            attrs: {
+              type: "text",
+              placeholder: "Nueva Asignatura",
+              name: "todo",
+            },
+            domProps: { value: _vm.asignatura },
             on: {
               input: function ($event) {
                 if ($event.target.composing) {
                   return
                 }
-                _vm.task = $event.target.value
+                _vm.asignatura = $event.target.value
               },
             },
           }),

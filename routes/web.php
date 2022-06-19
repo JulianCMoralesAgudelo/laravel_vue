@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\TaskController;
+use App\Http\Controllers\AsignaturaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,4 +18,4 @@ Route::get('/', function () {
     return view('tasklist.index');
 });
 
-Route::resource('/tasks', TaskController::class);
+Route::resource('/tasks', AsignaturaController::class);
