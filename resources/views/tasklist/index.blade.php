@@ -5,7 +5,7 @@
         <router-link to="/form" class="text-xl text-white mx-3 p-2" active-class="font-bold" exact>Agregar tarea
         </router-link>
 
-        <router-link to="/" class="text-xl text-white mx-3 p-2" active-class="font-bold" exact>Crear Tareas
+        <router-link to="/" class="text-xl text-white mx-3 p-2" active-class="font-bold" exact>Lista de tareas
         </router-link>
     </nav>
 

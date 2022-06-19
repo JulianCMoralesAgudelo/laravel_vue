@@ -5429,9 +5429,52 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  mounted: function mounted() {
-    console.log('Component mounted.');
+  data: function data() {
+    return {
+      tasks: []
+    };
+  },
+  created: function created() {
+    var _this = this;
+
+    axios.get('/tasks').then(function (response) {
+      return _this.tasks = response.data;
+    })["catch"]();
   }
 });
 
@@ -28188,20 +28231,121 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "div",
+    { staticClass: "w-full sm:w-8/12 md:w-5/12 p-5 bg-white" },
+    _vm._l(_vm.tasks, function (task) {
+      return _c(
+        "div",
+        {
+          key: task.id,
+          staticClass:
+            "flex justify-content-center p-2 border-b-2 border-gray-300 my-2",
+        },
+        [
+          _c("input", { attrs: { type: "checkbox" } }),
+          _vm._v(" "),
+          _c("p", { staticClass: "mx-2 mt-1 text-gray-900" }, [
+            _vm._v(_vm._s(task.todo)),
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "ml-auto flex" },
+            [
+              _c("router-link", { attrs: { to: "/" } }, [
+                _c(
+                  "svg",
+                  {
+                    staticClass: "h-6 w-6 text-green-500",
+                    attrs: {
+                      width: "24",
+                      height: "24",
+                      viewBox: "0 0 24 24",
+                      "stroke-width": "2",
+                      stroke: "currentColor",
+                      fill: "none",
+                      "stroke-linecap": "round",
+                      "stroke-linejoin": "round",
+                    },
+                  },
+                  [
+                    _c("path", {
+                      attrs: { stroke: "none", d: "M0 0h24v24H0z" },
+                    }),
+                    _vm._v(" "),
+                    _c("path", {
+                      attrs: {
+                        d: "M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4",
+                      },
+                    }),
+                    _vm._v(" "),
+                    _c("line", {
+                      attrs: { x1: "13.5", y1: "6.5", x2: "17.5", y2: "10.5" },
+                    }),
+                  ]
+                ),
+              ]),
+              _vm._v(" "),
+              _c("form", [
+                _c("button", { attrs: { type: "submit" } }, [
+                  _c(
+                    "svg",
+                    {
+                      staticClass: "h-6 w-6 text-red-500",
+                      attrs: {
+                        width: "24",
+                        height: "24",
+                        viewBox: "0 0 24 24",
+                        "stroke-width": "2",
+                        stroke: "currentColor",
+                        fill: "none",
+                        "stroke-linecap": "round",
+                        "stroke-linejoin": "round",
+                      },
+                    },
+                    [
+                      _c("path", {
+                        attrs: { stroke: "none", d: "M0 0h24v24H0z" },
+                      }),
+                      _vm._v(" "),
+                      _c("line", {
+                        attrs: { x1: "4", y1: "7", x2: "20", y2: "7" },
+                      }),
+                      _vm._v(" "),
+                      _c("line", {
+                        attrs: { x1: "10", y1: "11", x2: "10", y2: "17" },
+                      }),
+                      _vm._v(" "),
+                      _c("line", {
+                        attrs: { x1: "14", y1: "11", x2: "14", y2: "17" },
+                      }),
+                      _vm._v(" "),
+                      _c("path", {
+                        attrs: {
+                          d: "M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12",
+                        },
+                      }),
+                      _vm._v(" "),
+                      _c("path", {
+                        attrs: {
+                          d: "M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3",
+                        },
+                      }),
+                    ]
+                  ),
+                ]),
+              ]),
+            ],
+            1
+          ),
+        ]
+      )
+    }),
+    0
+  )
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "w-full sm:w-8/12 md:w-5/12 p-5 bg-white" },
-      [_c("h1", [_vm._v("Tareas")])]
-    )
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
